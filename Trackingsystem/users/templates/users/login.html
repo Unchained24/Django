@@ -1,0 +1,43 @@
+{% extends 'users/main.html' %}
+{% load static %}
+{% block content %}
+
+
+    <div class="auth">
+      <div class="card">
+        <div class="auth__header text-center">
+										{% if messages %}
+											{% for message in messages %}
+											<div class="alert alert--{{message.tags}}">
+												<p class="alert__message">{{message}}</p>
+												<button class="alert__close">x</button>
+											</div>
+											{% endfor %}
+										{% endif %}
+
+		<a href="/">
+			<img src="images/icon.svg" alt="icon" />
+			</a>
+			<h3>Admin Login</h3>
+			<p>Hello Employee, Welcome Back!</p>
+		</div>
+				<form action="{% url 'login' %}" class="form auth__form" method="POST">
+					{% csrf_token %}
+					<div class="form__field">
+						<label for="formInput#text">Username: </label>
+							<input type="text" class="input input--text" placeholder="Username" name="username" required>
+					</div>
+					<div class="form__field">
+						<label for="formInput#password">Password: </label>
+							<input type="password" class="input input--password" placeholder="••••••••" name="password" required>
+					</div>
+						<div class="auth__actions">
+							<input class="btn btn--sub btn--lg" type="submit" value="Log In" />
+								<a href="{% url 'reset_password' %}">Forgot Password</a>
+						</div>
+				</form>
+	    	</div>
+		</div>
+	</div>
+
+	{% endblock content %}

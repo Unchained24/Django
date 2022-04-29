@@ -1,0 +1,28 @@
+{% extends 'users/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="container">
+<br>
+</div>
+<div class="fluid-container">
+    <fieldset>
+        <legend class= "mb-3"> Search Shipment </legend>
+    </fieldset>
+    <form action="{% url 'queryshipment' %}" method="POST">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group">
+                    <input type="text" class="form-control form-control-lg" placeholder="Tracking ID" name="search" required>
+                </div>
+            </div>
+            <div class="col-6">
+                <button type="submit" class="btn btn-primary btn-lg">Search</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

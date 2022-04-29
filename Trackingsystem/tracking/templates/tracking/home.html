@@ -1,0 +1,344 @@
+{% extends 'tracking/base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<main>
+
+
+
+
+    
+    <div class="slider-area ">
+        <div class="slider-active">
+
+
+            <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="{% static 'img/hero/bg3.jpg' %}" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block mx-auto">
+                            <!--Hero form -->
+                        
+                            <form class="search-box" method="POST" action="{% url 'search' %}">
+                                {% csrf_token %}
+                                <div class="input-form">
+                                    <input type="text" placeholder="Your Tracking ID" name="search" required>
+                                </div>
+                                <button type="submit" class="btn btn-warning">Track & Trace</button>
+                                
+                            </form>	
+
+                            <!-- Hero Pera -->
+                            <div class="hero-pera">
+                                <p>For order status inquiry</p>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+             </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+    <!--? our info Start -->
+    <div class="our-info-area pt-70 pb-40">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="single-info mb-30">
+                        <div class="info-icon">
+                            <span class="flaticon-support"></span>
+                        </div>
+                        <div class="info-caption">
+                            <p>Call Us Anytime</p>
+                            <span>+ (123) 1800-567-8990</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="single-info mb-30">
+                        <div class="info-icon">
+                            <span class="flaticon-clock"></span>
+                        </div>
+                        <div class="info-caption">
+                            <p>Sunday CLOSED</p>
+                            <span>Mon - Sat 8.00 - 18.00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="single-info mb-30">
+                        <div class="info-icon">
+                            <span class="flaticon-place"></span>
+                        </div>
+                        <div class="info-caption">
+                            <p>Columbia, SC 29201</p>
+                            <span>USA, New York - 10620</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- our info End -->
+
+
+
+    <div class="container">
+        <div class="section-tittle text-center">
+          <h2>{% for i in track %}
+            {{i.firstname}}
+            {% endfor %}
+              PACKAGE INFORMATION</h2>
+        </div>
+        <div class="row">
+            
+            <div class="col-5">
+                
+                <img src="{{track.item_image.url}}" alt="" width="100%" height="100%">
+            </div>
+            <div class="col-7">
+
+                <table class="table-striped table flex justify-center">
+                    <tbody class="text-center">
+                    
+                    <tr class="info">
+                        <th class="text-left">Tracking Number:</th>
+                        <td class="text-left font-semibold text-red-600" style="color:red">
+                            {% for i in track %}
+                            {{i.trackingID}}
+                            {% endfor %}
+                        </td>
+                    </tr>
+                    <tr class="info">
+                        <th class="text-left">Invoice No:</th>
+                        <td class="text-left">
+                            {% for i in track %}
+                            {{i.invoice_no}}
+                            {% endfor %}
+                        </td>
+                    </tr>
+                    <tr class="info">
+                        <th class="text-left">Item Location:</th>
+                        <td class="text-left">
+                            {% for i in track %}
+                            {{i.invoice_no}}
+                            {% endfor %}
+                        </td>
+                    </tr>
+                    <tr class="info">
+                        <th class="text-left">Pickup:</th>
+                        <td class="text-left">
+                            {% for i in track %}
+                            {{i.pickup}}
+                            {% endfor %}
+                        </td>
+                    </tr>
+                    <tr class="info">
+                        <th class="text-left">Status:</th>
+                        <td class="text-left">
+                            {% for i in track %}
+                            {{i.status}}
+                            {% endfor %}
+                        </td>
+                    </tr>
+                    <tr class="info">
+                        <th class="text-left">Comment:</th>
+                        <td class="text-left">
+                            {% for i in track %}
+                            {{i.comment}}
+                            {% endfor %}
+                        </td>
+                    </tr>
+                    
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+       
+ 
+        
+    </div>
+
+
+    <!--? Categories Area Start -->
+    <div class="categories-area section-padding30">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <!-- Section Tittle -->
+                    <div class="section-tittle text-center mb-80">
+                        <span>Our Services</span>
+                        <h2>What We Can Do For You</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="single-cat text-center mb-50">
+                        <div class="cat-icon">
+                            <span class="flaticon-shipped"></span>
+                        </div>
+                        <div class="cat-cap">
+                            <h5><a href="services.html">Land Transport</a></h5>
+                            <p>The sea freight service has grown conside rably in recent years. We spend timetting to know your processes to.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="single-cat text-center mb-50">
+                        <div class="cat-icon">
+                            <span class="flaticon-ship"></span>
+                        </div>
+                        <div class="cat-cap">
+                            <h5><a href="services.html">Ship Transport</a></h5>
+                            <p>The sea freight service has grown conside rably in recent years. We spend timetting to know your processes to.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="single-cat text-center mb-50">
+                        <div class="cat-icon">
+                            <span class="flaticon-plane"></span>
+                        </div>
+                        <div class="cat-cap">
+                            <h5><a href="services.html">Air Transport</a></h5>
+                            <p>The sea freight service has grown conside rably in recent years. We spend timetting to know your processes to.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Categories Area End -->
+
+    <!--? About Area Start -->
+    <div class="about-low-area padding-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-12">
+                    <div class="about-caption mb-50">
+                        <!-- Section Tittle -->
+                        <div class="section-tittle mb-35">
+                            <span>About Our Company</span>
+                            <h2>Safe Logistic & Transport  Solutions That Saves our Valuable Time!</h2>
+                        </div>
+                        <p>Brook presents your services with flexible, convenient and cdpose layouts. You can select your favorite layouts & elements for cular ts with unlimited ustomization possibilities. Pixel-perfect replication of the designers is intended.</p>
+                        <p>Brook presents your services with flexible, convefnient and chient anipurpose layouts. You can select your favorite layouts.</p>
+                        <a href="about.html" class="btn">More About Us</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <!-- about-img -->
+                    <div class="about-img ">
+                        <div class="about-font-img">
+                            <img src="{% static 'img/gallery/about2.png' %}" alt="">
+                        </div>
+                        <div class="about-back-img d-none d-lg-block">
+                            <img src="{% static '/img/gallery/about1.png' %}" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About Area End -->
+    
+    
+    <!--Team Ara Start -->
+    <div class="team-area section-padding30">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="cl-xl-7 col-lg-8 col-md-10">
+                    <!-- Section Tittle -->
+                    <div class="section-tittle text-center mb-70">
+                        <span>Our Team Mambers</span>
+                        <h2>What We Can Do For You</h2>
+                    </div> 
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="single-team mb-30 text-center">
+                        <div class="team-img">
+                            <img src="{% static 'img/gallery/team1.png' %}" alt="">
+                            <div class="team-caption">
+                                <h3><a href="#">Mancherwan Kolin</a></h3>
+                                <p>Health agent</p>
+                                <!-- Blog Social -->
+                                <div class="team-social">
+                                    <ul>
+                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                        <li><a href="#"><i class="fas fa-globe"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="single-team mb-30 text-center">
+                        <div class="team-img">
+                            <img src="{% static 'img/gallery/team2.png' %}" alt="">
+                            <div class="team-caption">
+                                <h3><a href="#">Mancherwan Kolin</a></h3>
+                                <p>Health agent</p>
+                                <!-- Blog Social -->
+                                <div class="team-social">
+                                    <ul>
+                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                        <li><a href="#"><i class="fas fa-globe"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="single-team mb-30 text-center">
+                        <div class="team-img">
+                            <img src="{% static 'img/gallery/team3.png' %}" alt="">
+                            <div class="team-caption">
+                                <h3><a href="#">Mancherwan Kolin</a></h3>
+                                <p>Health agent</p>
+                                <!-- Blog Social -->
+                                <div class="team-social">
+                                    <ul>
+                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                        <li><a href="#"><i class="fas fa-globe"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Team Ara End -->
+    
+</main>
+
+{% endblock content %}
+
+
+
+

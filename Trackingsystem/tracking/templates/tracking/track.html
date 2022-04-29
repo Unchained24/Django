@@ -1,0 +1,106 @@
+{% extends 'tracking/base.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="slider-area ">
+    <div class="slider-active">
+
+
+        <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+            <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="{% static 'img/hero/bg3.jpg' %}" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block mx-auto">
+                        <!--Hero form -->
+                    
+                        <form class="search-box" method="POST" action="{% url 'search' %}">
+                            {% csrf_token %}
+                            <div class="input-form">
+                                <input type="text" placeholder="Your Tracking ID" name="search" required>
+                            </div>
+                            <button type="submit" class="btn btn-warning">Track & Trace</button>
+                            
+                        </form>	
+
+                        <!-- Hero Pera -->
+                        <div class="hero-pera">
+                            <p>For order status inquiry</p>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+         </div>
+
+    </div>
+</div>
+
+
+
+<div >
+    {% if found %}
+    {% for track in track %}
+    <!-- {{form.firstname}} -->
+    <h2> PACKAGE INFORMATION</h2>
+    <div class="row">
+        <div class="col-5">
+            
+            <img src="{{track.item_image.url}}" alt="" width="100%" height="300">
+        </div>
+        <div class="col-7">
+
+            <table class="table-striped table flex justify-center">
+                <tbody class="text-center">
+                
+                <tr class="info">
+                    <th class="text-left">Tracking Number:</th>
+                    <td class="text-left font-semibold text-red-600" style="color:red">
+                        {{track.trackingID}}
+                    </td>
+                </tr>
+                <tr class="info">
+                    <th class="text-left">Invoice No:</th>
+                    <td class="text-left">
+                        {{track.invoice_no}}
+                    </td>
+                </tr>
+                <tr class="info">
+                    <th class="text-left">Item Location:</th>
+                    <td class="text-left">
+                        {{track.invoice_no}}
+                    </td>
+                </tr>
+                <tr class="info">
+                    <th class="text-left">Pickup:</th>
+                    <td class="text-left">
+                        {{track.pickup}}
+                    </td>
+                </tr>
+                <tr class="info">
+                    <th class="text-left">Status:</th>
+                    <td class="text-left">
+                        {{track.status}}
+                    </td>
+                </tr>
+                <tr class="info">
+                    <th class="text-left">Comment:</th>
+                    <td class="text-left">
+                        {{track.comment}}
+                    </td>
+                </tr>
+                
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <h1>{{search}} NOT FOUND</h1>
+    {% endif %}
+</div>
+
+
+{% endblock content %}

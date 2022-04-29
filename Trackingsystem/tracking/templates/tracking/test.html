@@ -1,0 +1,12 @@
+
+
+ <form class="search-box" method="POST">
+    {% csrf_token %}
+    <div class="input-form">
+        <input type="text" placeholder="Your Tracking ID" name="search">
+    </div>
+    <a href="{% url 'getdata' %}">
+        <button type="submit" class="btn btn-warning">Track & Trace</button>
+    </a>
+    
+</form>	

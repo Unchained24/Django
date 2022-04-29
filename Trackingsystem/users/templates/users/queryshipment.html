@@ -1,0 +1,74 @@
+{% extends 'users/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+Hello Word!!
+
+{{search}}
+
+
+<div >
+    {% if found %}
+    {% for track in track %}
+    <!-- {{form.firstname}} -->
+    <h2> PACKAGE INFORMATION</h2>
+    <div class="row">
+        <div class="col-5">
+            
+            <img src="{{track.item_image.url}}" alt="" width="100%" height="300">
+        </div>
+        <div class="col-7">
+
+            <table class="table-striped table flex justify-center">
+                <tbody class="text-center">
+                
+                <tr class="info">
+                    <th class="text-left">Tracking Number:</th>
+                    <td class="text-left font-semibold text-red-600" style="color:red">
+                        {{track.trackingID}}
+                    </td>
+                </tr>
+                <tr class="info">
+                    <th class="text-left">Invoice No:</th>
+                    <td class="text-left">
+                        {{track.invoice_no}}
+                    </td>
+                </tr>
+                <tr class="info">
+                    <th class="text-left">Item Location:</th>
+                    <td class="text-left">
+                        {{track.invoice_no}}
+                    </td>
+                </tr>
+                <tr class="info">
+                    <th class="text-left">Pickup:</th>
+                    <td class="text-left">
+                        {{track.pickup}}
+                    </td>
+                </tr>
+                <tr class="info">
+                    <th class="text-left">Status:</th>
+                    <td class="text-left">
+                        {{track.status}}
+                    </td>
+                </tr>
+                <tr class="info">
+                    <th class="text-left">Comment:</th>
+                    <td class="text-left">
+                        {{track.comment}}
+                    </td>
+                </tr>
+                
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <h1>{{search}} NOT FOUND</h1>
+    {% endif %}
+</div>
+
+{% endblock content%}

@@ -1,0 +1,18 @@
+{% extends 'users/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+    <form method='POST'>
+        {% csrf_token %}
+        <p> Are you sure you want to delete Tracking ID : {{track}} information?</p>
+
+        <a href="{% url 'listshipment' %}">
+            Go back
+        </a>
+       
+        <input type='submit' value = "confirm" />
+    </form>
+</div>
+
+{% endblock content %}

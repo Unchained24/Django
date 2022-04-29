@@ -1,0 +1,41 @@
+{% extends 'users/base.html' %}
+{% load static %}
+
+{% block content %}
+List Shipment
+
+
+<div class="container">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">TrackingID</th>
+            <th scope="col">Email</th>
+            <th scope="col">Shipper Name</th>
+            <th scope="col">Recivers Address</th>
+            <th scope="col">Shipment Type</th>
+            <th scope="col">Status</th>
+        </tr>
+        </thead>
+        {% for i in shipment %}
+        <tbody>
+        <tr>
+            <th scope="row">{{i.trackingID}}</th>
+            <td>{{i.email}}</td>
+            <td>{{i.shipper_name}}</td>
+            <td>{{i.receiver_address}}</td>
+            <td>{{i.shipment_type}}</td>
+            <td>{{i.status}}</td>
+            <td> <a href="{% url 'viewshipment' i.id %}"> views </a> </td>
+            <td> <a href="{% url 'updateshipment' i.id %}"> Update </a> </td>
+            <td> <a href="{% url 'deleteshipment' i.id %}" style= color:red> X </a> </td>
+        </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+</div>
+
+
+
+{% endblock content %}
+
